@@ -2,32 +2,57 @@ window.onload = ()=>{
     var countDate = new Date('Apr 6, 2017 14:00:00').getTime();
     var local = document.getElementById('localCity');
     var tmp = document.getElementById('tmp');
+    var focus = document.getElementById('focusItem');
 
     // 获取地区
     function getLocal(){
         if(localStorage.getItem('localCity') === undefined || localStorage.getItem('localCity') === ''){
-            local.textContent = '石家庄市';
+            local.value = '石家庄市';
         }else{
-            local.textContent = localStorage.getItem('localCity')
+            local.value = localStorage.getItem('localCity')
+        }
+    }
+    // 获取待办事项
+    function getFocus(){
+        if(localStorage.getItem('focus') === undefined || localStorage.getItem('focus') === ''){
+            focus.value = 'Focus?';
+        }else{
+            focus.value = localStorage.getItem('focus');
         }
     }
 
     // 事件监听
     local.addEventListener('keypress',setLocal);
     local.addEventListener('blur',setLocal);
+    focus.addEventListener('keypress',setFocus);
+    focus.addEventListener('blur',setFocus);
 
     // 设置地区
     function setLocal(e){
         if(e.type === "keypress"){
-            if(e.keyCode == 13){
-                localStorage.setItem('localCity',e.target.innerText);
+            if(e.keyCode == 13 || e.which == 13){
+                if(local.value == ''){
+                    local.value = '石家庄市';
+                }
+                localStorage.setItem('localCity',e.target.value);
                 local.blur();
                 weather();
-                console.log(1);
             }
         }else{
-            localStorage.setItem('localCity',e.target.innerText);
+            localStorage.setItem('localCity',e.target.value);
             weather();
+        }
+    }
+
+    // 设置待办事项
+    function setFocus(e){
+        if(e.type === "keypress"){
+            if(e.keyCode == 13 || e.which == 13){
+                localStorage.setItem('focus',e.target.value);
+                local.blur();
+            }
+        }else{
+            localStorage.setItem('focus',e.target.value);
         }
     }
 
@@ -58,12 +83,13 @@ window.onload = ()=>{
     
     function weather(){
         fetch(
-            `https://free-api.heweather.net/s6/weather/now?location=${local.textContent}&key=740192290ada4adfb809c13578a015ba`
+            `https://free-api.heweather.net/s6/weather/now?location=${local.value}&key=740192290ada4adfb809c13578a015ba`
         ).then(res=>res.json())
         .then((data)=>{
             tmp.textContent = data.HeWeather6[0].now.tmp+"℃";
         });
     }
+    getFocus();
     getLocal();
     weather();
 }
