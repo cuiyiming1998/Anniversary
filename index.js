@@ -6,7 +6,6 @@ window.onload = ()=>{
 
     // 获取地区
     function getLocal(){
-        console.log(localStorage.getItem('localCity'));
         if(localStorage.getItem('localCity') == undefined || localStorage.getItem('localCity') == null || localStorage.getItem('localCity') == ''){
             local.value = '石家庄市';
         }else{
@@ -49,6 +48,9 @@ window.onload = ()=>{
     function setFocus(e){
         if(e.type === "keypress"){
             if(e.keyCode == 13 || e.which == 13){
+                if(focus.value == ''){
+                    focus.value = 'Focus?'
+                }
                 localStorage.setItem('focus',e.target.value);
                 local.blur();
             }
