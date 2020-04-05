@@ -6,6 +6,7 @@ window.onload = ()=>{
 
     // 获取地区
     function getLocal(){
+        console.log(localStorage.getItem('localCity'));
         if(localStorage.getItem('localCity') === undefined || localStorage.getItem('localCity') === null || localStorage.getItem('localCity') === ''){
             local.value = '石家庄市';
         }else{
