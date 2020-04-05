@@ -7,7 +7,7 @@ window.onload = ()=>{
     // 获取地区
     function getLocal(){
         console.log(localStorage.getItem('localCity'));
-        if(localStorage.getItem('localCity') === undefined || localStorage.getItem('localCity') === null || localStorage.getItem('localCity') === ''){
+        if(localStorage.getItem('localCity') == undefined || localStorage.getItem('localCity') == null || localStorage.getItem('localCity') == ''){
             local.value = '石家庄市';
         }else{
             local.value = localStorage.getItem('localCity')
@@ -15,7 +15,7 @@ window.onload = ()=>{
     }
     // 获取待办事项
     function getFocus(){
-        if(localStorage.getItem('focus') === undefined || localStorage.getItem('focus') === null || localStorage.getItem('focus') === ''){
+        if(localStorage.getItem('focus') == undefined || localStorage.getItem('focus') == null || localStorage.getItem('focus') == ''){
             focus.value = 'Focus?';
         }else{
             focus.value = localStorage.getItem('focus');
