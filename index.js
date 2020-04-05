@@ -49,7 +49,7 @@ window.onload = ()=>{
         if(e.type === "keypress"){
             if(e.keyCode == 13 || e.which == 13){
                 if(focus.value == ''){
-                    focus.value = 'Focus?'
+                    focus.value = 'Focus?';
                 }
                 localStorage.setItem('focus',e.target.value);
                 local.blur();
