@@ -1,5 +1,5 @@
 window.onload = ()=>{
-    var countDate = new Date('Apr 6, 2017 14:00:00').getTime();
+    var countDate = new Date('Jan 1, 2021 00:00:00').getTime();
     var local = document.getElementById('localCity');
     var tmp = document.getElementById('tmp');
     var focus = document.getElementById('focusItem');
@@ -7,7 +7,7 @@ window.onload = ()=>{
     // 获取地区
     function getLocal(){
         if(localStorage.getItem('localCity') == undefined || localStorage.getItem('localCity') == null || localStorage.getItem('localCity') == ''){
-            local.value = '石家庄市';
+            local.value = '北京市';
         }else{
             local.value = localStorage.getItem('localCity')
         }
@@ -32,7 +32,7 @@ window.onload = ()=>{
         if(e.type === "keypress"){
             if(e.keyCode == 13 || e.which == 13){
                 if(local.value == ''){
-                    local.value = '石家庄市';
+                    local.value = '北京市';
                 }
                 localStorage.setItem('localCity',e.target.value);
                 local.blur();
