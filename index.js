@@ -1,5 +1,5 @@
 window.onload = ()=>{
-    var countDate = new Date('Jan 3, 2021 01:38:00').getTime();
+    var countDate = new Date('Apri 6, 2017 18:00:00').getTime();
     var local = document.getElementById('localCity');
     var tmp = document.getElementById('tmp');
     var focus = document.getElementById('focusItem');
